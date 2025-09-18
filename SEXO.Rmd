@@ -1,0 +1,61 @@
+---
+title: "Aguirre Alavarado Danna Paola"
+output: html_document
+date: "2025-09-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Datos
+```{r}
+Sexo <- c("NA", "NA", "NA", "Femenino", "NA", "Femenino", "Femenino", "Femenino", "NA", "Masculino", "Femenino", "Femenino", "Masculino", "Femenino", "NA", "Masculino", "NA", "NA", "Masculino", "Masculino", "Masculino", "Masculino", "NA", "Femenino", "NA")
+(Sexo)
+```
+
+```{r}
+summary(Sexo)
+
+```
+
+```{r}
+sexo_ord <- sort(Sexo); (sexo_ord)
+```
+
+```{r}
+frecuencia <- table(Sexo)
+print("Frecuencia absoluta:")
+print(frecuencia)
+
+proporciones <- prop.table(frecuencia)
+print("Proporciones:")
+print(proporciones)
+
+porcentajes <- round(proporciones * 100, 2)
+print("Porcentajes (incluyendo NA):")
+print(porcentajes)
+```
+
+```{r}
+frecuencia_minima <- min(frecuencia)
+print(paste("Frecuencia mínima:", frecuencia_minima))
+
+frecuencia_maxima <- max(frecuencia)
+print(paste("Frecuencia máxima:", frecuencia_maxima))
+```
+
+```{r}
+barplot(frecuencia,
+        main = "Frecuencia de Sexo",
+        xlab = "Sexo",
+        ylab = "Frecuencia",
+        col = c("pink", "lightblue", "gray"))
+```        
+ 
+```{r}       
+pie(frecuencia,
+    labels = paste(names(frecuencia), " (", porcentajes, "%)", sep = ""),
+    main = "Proporción de Sexo",
+    col = c("pink", "lightblue", "gray"))
+```
