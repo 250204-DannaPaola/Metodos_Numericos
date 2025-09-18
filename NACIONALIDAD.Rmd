@@ -1,0 +1,97 @@
+---
+title: "Aguirre Alavardo Danna Paola"
+output: html_document
+date: "2025-09-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+Nacionalidad <-  c("Boliviana", "Peruana", "Venezolana", "Cubana", "Mexicana",
+  "Colombiana", "Colombiana", "Brasileña", "Colombiana", "Venezolana", "Chilena",
+  "Argentina", "Mexicana", "Mexicana", "Argentina", "Mexicana", "Argentina",
+  "Brasileña", "Mexicana", "Uruguaya", "Argentina", "Argentina", "Colombiana",
+  "Cubana", "Boliviana", "Peruana", "Boliviana", "Boliviana", "Peruana", "Uruguaya",
+  "Chilena", "Uruguaya", "Venezolana", "Uruguaya", "Argentina", "Venezolana",
+  "Uruguaya", "Cubana", "Venezolana", "Cubana", "Chilena", "Argentina", "Peruana",
+  "Boliviana", "Cubana", "Venezolana", "Colombiana", "Mexicana", "Uruguaya",
+  "Argentina" )
+(Nacionalidad)
+```
+
+```{r}
+summary(Nacionalidad)
+```
+
+```{r}
+Nacionalidad_ord <- sort(Nacionalidad); (Nacionalidad_ord)
+```
+
+```{r}
+Frecuencia <- table(Nacionalidad)
+cat("Tabla de Frecuencia (por nacionalidad):\n")
+print(Frecuencia)
+cat("\n")
+```
+
+# Ordenar los datos por frecuencia de mayor a menor
+```{r}
+frecuencia <- table(Nacionalidad)
+cat("Tabla de Frecuencia (por Nacionalidad):\n")
+print(frecuencia)
+cat("\n")
+```
+
+```{r}
+frecuencia_ordenada <- sort(frecuencia, decreasing = TRUE)
+cat("Tabla de Frecuencia (ordenada):\n")
+print(frecuencia_ordenada)
+cat("\n")
+```
+
+# Proporciones y porcentajes
+```{r}
+proporciones <- prop.table(frecuencia_ordenada)
+porcentajes <- round(proporciones * 100, 2)
+tabla_analisis <- data.frame(Frecuencia = as.numeric(frecuencia_ordenada),
+                             Proporcion = as.numeric(proporciones),
+                             Porcentaje = as.numeric(porcentajes))
+```
+
+```{r}
+cat("Tabla de Proporciones y Porcentajes:\n")
+print(tabla_analisis)
+cat("\n")
+```
+
+# Máximo y mínimo
+```{r}
+nacionalidad_max <- names(frecuencia_ordenada)[1]
+frecuencia_max <- max(frecuencia_ordenada)
+cat("Nacionalidad con la frecuencia más alta (Máximo):", nacionalidad_max, "con", frecuencia_max, "apariciones.\n")
+
+nacionalidad_min <- names(frecuencia_ordenada)[length(frecuencia_ordenada)]
+frecuencia_min <- min(frecuencia_ordenada)
+cat("Nacionalidad con la frecuencia más baja (Mínimo):", nacionalidad_min, "con", frecuencia_min, "apariciones.\n")
+```
+
+```{r}
+barplot(frecuencia_ordenada,
+        main = "Frecuencia de Nacionalidades",
+        xlab = "Nacionalidad",
+        ylab = "Frecuencia",
+        col = "skyblue",
+        las = 2)
+```
+
+```{r}
+pie(frecuencia_ordenada,
+    labels = paste(names(frecuencia_ordenada), " (", porcentajes, "%)", sep = ""),
+    main = "Distribución Porcentual de Nacionalidades",
+    col = rainbow(length(frecuencia_ordenada)))
+
+# Opcional: Agregar una leyenda si el gráfico es difícil de leer
+legend("topright", legend = names(frecuencia_ordenada), fill = rainbow(length(frecuencia_ordenada)), cex = 0.8)
+```
