@@ -1,5 +1,6 @@
 ---
-title: "Aguirre Alavardo Danna Paola"
+title: "Nacionalidad"
+author: "Aguirre Alvarado Danna Paola"
 output: html_document
 date: "2025-09-13"
 ---
@@ -94,4 +95,5 @@ pie(frecuencia_ordenada,
 
 # Opcional: Agregar una leyenda si el gráfico es difícil de leer
 legend("topright", legend = names(frecuencia_ordenada), fill = rainbow(length(frecuencia_ordenada)), cex = 0.8)
+
 ```
